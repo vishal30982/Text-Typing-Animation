@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+#main {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    --writingSpeed: 4s;
+    --characters: 17;
+}
+#text {
+    font-size: 100px;
+    text-align: center;
+    font-family: 'Source Code Pro', monospace;
+    position: relative;
+    animation: 0.8s infinite 5.5s blinkingtext;
+    text-transform: uppercase;
+}
+#text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    animation: var(--writingSpeed) steps(var(--characters)) 0.5s forwards typewriteranimation;   
+}
+#text::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-left: 5px solid black;
+    background-color: white;
+    animation: var(--writingSpeed) steps(var(--characters)) 0.5s forwards cursor;
+}
+@keyframes cursor {
+    to {
+        left: 100%;
+    }
+}
+@keyframes typewriteranimation {
+    to {
+        left: 100%;
+    }
+}
+@keyframes blinkingtext {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@keyframes show {
+    to {
+        opacity: 1;
+    }
+}
+#caption {
+    font-size: 30px;
+    opacity: 0;
+    animation: 1s ease 5s forwards show;
+}
